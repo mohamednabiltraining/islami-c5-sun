@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islami_c5_sun/MyThemeData.dart';
+import 'package:islami_c5_sun/home/hadeth/hadeth_details.dart';
 import 'package:islami_c5_sun/home_screen.dart';
 
 void main() {
@@ -11,7 +12,10 @@ class MyApplication extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Islami',
-      routes: {HomeScreen.routeName: (buildContext) => HomeScreen()},
+      routes: {
+        HomeScreen.routeName: (buildContext) => HomeScreen(),
+        HadethDetailsScreen.routeName: (buildContext) => HadethDetailsScreen()
+      },
       initialRoute: HomeScreen.routeName,
       theme: MyThemeData.theme,
       darkTheme: MyThemeData.darkTheme,
