@@ -6,7 +6,10 @@ class MyThemeData {
       primaryColor: colorGold,
       scaffoldBackgroundColor: Colors.transparent,
       appBarTheme: AppBarTheme(
-          color: Colors.transparent, elevation: 0, centerTitle: true),
+          iconTheme: IconThemeData(color: Colors.black),
+          color: Colors.transparent,
+          elevation: 0,
+          centerTitle: true),
       textTheme: TextTheme(
           headline1: TextStyle(
               fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black),

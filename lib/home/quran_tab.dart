@@ -131,7 +131,7 @@ class QuranTab extends StatelessWidget {
           flex: 2,
           child: ListView.separated(
               itemBuilder: (buildContext, index) {
-                return ItemSura(suraNames[index]);
+                return ItemSura(suraNames[index], index);
               },
               separatorBuilder: (buildContext, index) {
                 return Container(
