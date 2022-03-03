@@ -15,24 +15,35 @@ class _HadethTabState extends State<HadethTab> {
     if (allHadeth.length == 0) {
       loadHadethFile();
     }
-    return Container(
-      child: allHadeth.length == 0
-          ? Center(
+    return Column(
+      children: [
+        Expanded(
+            flex: 1,
+            child: Center(
+                child: Image.asset('assets/images/hadeth_header.png'))),
+        Expanded(
+          flex: 2,
+          child: Container(
+            child: allHadeth.length == 0
+                ? Center(
               child: CircularProgressIndicator(),
             )
-          : ListView.builder(
+                : ListView.builder(
               itemBuilder: (_, index) {
                 return ItemHadeth(allHadeth[index]);
               },
               itemCount: allHadeth.length,
             ),
+          ),
+        ),
+      ],
     );
   }
 
   void loadHadethFile() async {
     List<Hadeth> allHadeth = [];
     String fileContent =
-        await rootBundle.loadString('assets/files/ahadeth.txt');
+    await rootBundle.loadString('assets/files/ahadeth.txt');
     List<String> singleHadethList = fileContent.trim().split('#');
     for (int i = 0; i < singleHadethList.length; i++) {
       String hadethContent = singleHadethList[i].trim();
