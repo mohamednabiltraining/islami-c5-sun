@@ -1,51 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:islami_c5_sun/providers/theme_provider.dart';
+import 'package:islami_c5_sun/providers/language_provider.dart';
 import 'package:provider/provider.dart';
 
-class ThemeBottomSheet extends StatefulWidget {
+class LanguageBottomSheet extends StatefulWidget {
   @override
-  State<ThemeBottomSheet> createState() => _ThemeBottomSheetState();
+  State<LanguageBottomSheet> createState() => _LanguageBottomSheetState();
 }
 
-class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
+class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<ThemeProvider>(context);
-
+    var langProvider = Provider.of<LanguageProvider>(context);
     return Column(
       children: [
         InkWell(
           onTap: () {
-            provider.changeTheme(ThemeMode.light);
+            langProvider.changeLanguage('ar');
           },
           child: Container(
             padding: EdgeInsets.all(12),
-            child: getThemeWidget(AppLocalizations.of(context)!.light,
-                provider.themeMode == ThemeMode.light),
+            child: getLanguageItem('العربيه', langProvider.code == 'ar'),
           ),
         ),
         InkWell(
           onTap: () {
-            provider.changeTheme(ThemeMode.dark);
+            langProvider.changeLanguage('en');
           },
           child: Container(
             padding: EdgeInsets.all(12),
-            child: getThemeWidget(AppLocalizations.of(context)!.dark,
-                provider.themeMode == ThemeMode.dark),
+            child: getLanguageItem('English', langProvider.code == 'en'),
           ),
         )
       ],
     );
   }
 
-  Widget getThemeWidget(String themeName, bool isSelected) {
+  Widget getLanguageItem(String langName, bool isSelected) {
     if (isSelected) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            themeName,
+            langName,
             style: Theme.of(context)
                 .textTheme
                 .subtitle1
@@ -58,7 +54,7 @@ class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(themeName, style: Theme.of(context).textTheme.subtitle1),
+        Text(langName, style: Theme.of(context).textTheme.subtitle1),
       ],
     );
   }
