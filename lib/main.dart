@@ -22,6 +22,7 @@ class MyApplication extends StatelessWidget {
     var themeProvider = Provider.of<ThemeProvider>(context);
     var languageProvider = Provider.of<LanguageProvider>(context);
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Islami',
       routes: {
         HomeScreen.routeName: (buildContext) => HomeScreen(),
